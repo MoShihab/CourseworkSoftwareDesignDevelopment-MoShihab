@@ -1,0 +1,511 @@
+﻿<Window x:Class="GameProjectFinal.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+            Title="MainWindow" Height="800" Width="1200"
+            WindowStyle = "None" ResizeMode="NoResize"
+            Background="#181735"
+            WindowStartupLocation="CenterScreen">
+    <Grid >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Grid Background="#0F0F2D"
+              Grid.ColumnSpan="2"
+              MouseDown="Grid_MouseDown">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock x:Name="txtblckMokey"
+                Text="MoKey"
+                Foreground="#7DDDC2"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center"
+                FontFamily="Fonts/#Dosis"
+                FontWeight="Medium"
+                Margin="0"/>
+
+            <Image Grid.Column="0"
+                    Width="15" Height="15"
+                    Source="Assets/Images/Paw.png"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+                    Panel.ZIndex="1"
+                    Margin="0"/>
+
+            <Button Name="btnAbout"
+                Grid.ColumnSpan="2"
+                Grid.Column="2"
+                Content="About me"
+                Foreground="LightGray"
+                FontSize="14"
+                FontWeight="Light"
+                Click="btnAbout_Click">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis"/>
+                        <Setter Property="Background" Value="#0F0F2D"/>
+                        <Setter Property="Cursor" Value="Hand"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#FF4C70"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Width="100" Height="25" 
+                    CornerRadius="12"
+                    Background="{TemplateBinding Background}">
+                            <ContentPresenter VerticalAlignment="Center"
+                                  HorizontalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+
+            <Button Content="Exit"
+                    Grid.Column="13"
+                    Foreground="White"
+                    FontSize="14"
+                    FontWeight="Medium"
+                    Click="btnExit_Click">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis"/>
+                        <Setter Property="Background" Value="#FE6584"/>
+                        <Setter Property="Cursor" Value="Hand"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#FF4C70"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Width="75" Height="15" 
+                                CornerRadius="7"
+                                Background="{TemplateBinding Background}">
+                            <ContentPresenter VerticalAlignment="Center"
+                                              HorizontalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+
+        </Grid>
+
+        <StackPanel Grid.Row="1" Margin="50">
+
+            <StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0,10,0,30">
+                    <Image Width="100" Height="100"
+                        Source="Assets/Images/SirCat.png"
+                        Panel.ZIndex="1"
+                        Margin="5"/>
+                    <TextBlock Text="MoKey Games"
+                            Foreground="#7DDDC2"
+                            FontSize="40"
+                            FontWeight="Medium"
+                            VerticalAlignment="Center"
+                            FontFamily="Fonts/#Dosis"/>
+                </StackPanel>
+
+                <TextBlock Text="Tic Tac toe"
+                            Foreground="White"
+                            FontSize="25"
+                            FontWeight="Medium"
+                            FontFamily="Fonts/#Dosis"/>
+                <TextBlock Text=" Tic Tac Toe is a classic two-player game where opponents take turns marking a 3x3 grid with their symbol (X or O).The objective is to form a horizontal, vertical, or diagonal line of three of their symbols before the opponent does.The game ends when one player achieves this goal or the grid is filled."
+                            Name="txtTicTacToe"
+                            TextWrapping="Wrap"
+                            Foreground="White"
+                            FontSize="12"
+                            FontWeight="Light"
+                            FontFamily="Fonts/#Dosis"
+                            Opacity="0"
+                            Margin="0,5,0,10"/>
+                <TextBlock Text="Hangman"
+                           Foreground="White"
+                           FontSize="25"
+                           FontWeight="Medium"
+                           FontFamily="Fonts/#Dosis"/>
+                <TextBlock Text=" Hangman is a word-guessing game where one player thinks of a word and the other tries to guess it letter by letter. The guessing player suggests letters, and for each incorrect guess, a part of a stick figure is drawn. The game continues until the word is guessed or the figure is complete."
+                            Name="txtHangman"
+                            TextWrapping="Wrap"
+                            Foreground="White"
+                            FontSize="12"
+                            FontWeight="Light"
+                            FontFamily="Fonts/#Dosis"
+                            Opacity="0"
+                            Margin="0,10,0,10"/>
+                <TextBlock Text="Battleships"
+                           Foreground="White"
+                           FontSize="25"
+                           FontWeight="Medium"
+                           FontFamily="Fonts/#Dosis"/>
+                <TextBlock Text=" Battleships is a strategic two-player board game where each player arranges a fleet of ships on a grid. Players take turns calling out coordinates to locate and sink the opponent's hidden fleet. The goal is to eliminate all of the opponent's ships before they do the same. Strategic thinking and deduction are key."
+                            Name="txtBattleships"
+                            TextWrapping="Wrap"
+                            Foreground="White"
+                            FontSize="12"
+                            FontWeight="Light"
+                            FontFamily="Fonts/#Dosis"
+                            Opacity="0"
+                            Margin="0,10,0,0"/>
+            </StackPanel>
+
+            <StackPanel>
+                <TextBlock Text="Please select one of the following games"
+                            TextWrapping="Wrap"
+                            Foreground="White"
+                            FontSize="18"
+                            FontWeight="Light"
+                            FontFamily="Fonts/#Dosis"
+                            Margin="0,20,0,0"/>
+
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal"
+                        Margin="0,10,0,0">
+                <Button Name="btnTickTackToe"
+                        Content="Tic Tac Toe"
+                        Foreground="White"
+                        FontSize="14"
+                        FontWeight="Medium"
+                        Margin="0,0,10,0"
+                        Click="ButtonTickTackToe_Click">
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis"/>
+                            <Setter Property="Background" Value="#39385D"/>
+                            <Setter Property="Cursor" Value="Hand"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#FF4C70"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Width="100" Height="25" 
+                                    CornerRadius="12"
+                                    Background="{TemplateBinding Background}">
+                                <ContentPresenter VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+
+                <Button Name="btnHangman"
+                        Content="Hangman"
+                        Foreground="White"
+                        FontSize="14"
+                        FontWeight="Medium"
+                        Margin="0,0,10,0"
+                        Click="btnHangman_Click">
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis"/>
+                            <Setter Property="Background" Value="#39385D"/>
+                            <Setter Property="Cursor" Value="Hand"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#FF4C70"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Width="100" Height="25" 
+                                    CornerRadius="12"
+                                    Background="{TemplateBinding Background}">
+                                <ContentPresenter VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+
+                <Button Name="btnBattleships"
+                        Content="Battleships"
+                        Foreground="White"
+                        FontSize="14"
+                        FontWeight="Medium"
+                        Click="btnBattleships_Click">
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis"/>
+                            <Setter Property="Background" Value="#39385D"/>
+                            <Setter Property="Cursor" Value="Hand"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#FF4C70"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Width="100" Height="25" 
+                                    CornerRadius="12"
+                                    Background="{TemplateBinding Background}">
+                                <ContentPresenter VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </StackPanel>
+            <TextBlock Text="Please select your oppenent and press Start"
+            TextWrapping="Wrap"
+            Foreground="White"
+            FontSize="18"
+            FontWeight="Light"
+            FontFamily="Fonts/#Dosis"
+            Margin="0,10,0,0"/>
+            <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+
+                <Button Name="btnPlayer"
+                        Content="Player"
+                        Foreground="White"
+                        FontSize="14"
+                        FontWeight="Medium"
+                        Margin="0,-20,10,0"
+                        Click="btnPlayer_Click"
+                        MouseEnter="btnPlayer_MouseEnter"
+                        MouseLeave="btnPlayer_MouseLeave">
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis"/>
+                            <Setter Property="Background" Value="#39385D"/>
+                            <Setter Property="Cursor" Value="Hand"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#FF4C70"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Width="100" Height="25" 
+                    CornerRadius="12"
+                    Background="{TemplateBinding Background}">
+                                <ContentPresenter VerticalAlignment="Center"
+                                  HorizontalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+                <Button Name="btnCPU"
+                        Content="CPU"
+                        Foreground="White"
+                        FontSize="14"
+                        FontWeight="Medium"
+                        Margin="0,-20,120,0"
+                        Click="btnCPU_Click"
+                        MouseEnter="btnCPU_MouseEnter"
+                        MouseLeave="btnCPU_MouseLeave">
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis"/>
+                            <Setter Property="Background" Value="#39385D"/>
+                            <Setter Property="Cursor" Value="Hand"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#FF4C70"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Width="100" Height="25" 
+                                    CornerRadius="12"
+                                    Background="{TemplateBinding Background}">
+                                <ContentPresenter VerticalAlignment="Center"
+                                                    HorizontalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+
+                <Button Name="btnStart"
+                     Content="Start"
+                     Foreground="White"
+                     FontSize="14"
+                     FontWeight="Medium"
+                     Click="btnStart_Click">
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis"/>
+                            <Setter Property="Background" Value="#FE6584"/>
+                            <Setter Property="Cursor" Value="Hand"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#FF4C70"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Width="150" Height="50" 
+                                 CornerRadius="13"
+                                 Background="{TemplateBinding Background}">
+                                <ContentPresenter VerticalAlignment="Center"
+                                               HorizontalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </StackPanel>
+            <TextBlock x:Name="txtComingSoon"
+                Text="Coming soon!"
+                Foreground="White"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Center"
+                FontSize="25"
+                FontWeight="Medium"
+                FontFamily="Fonts/#Dosis" Height="39"
+                       Visibility="Hidden"/>
+        </StackPanel>
+
+
+        <Grid Grid.Column="1"
+              Grid.RowSpan="2"
+              Margin="160,-365,-610,85"
+              Panel.ZIndex="-1">
+
+            <Grid.RenderTransform>
+                <RotateTransform Angle = "50"/>
+            </Grid.RenderTransform>
+
+            <StackPanel Orientation="Horizontal"
+                        Margin="-300,150,-220,-250">
+
+                <StackPanel>
+                    <Border Width="700"
+                            Height="35"
+                            Background="#7DDDC2"
+                            Margin="150,0,0,0"
+                            CornerRadius="20"/>
+                    <Border Width="700"
+                            Height="35"
+                            Background="#FC6586"
+                            Margin="0,15,0,0"
+                            CornerRadius="20"/>
+                    <Border Width="700"
+                            Height="35"
+                            Background="#383660"
+                            Margin="75,15,0,0"
+                            CornerRadius="20"/>
+                </StackPanel>
+
+                <StackPanel>
+                    <Border Width="700"
+                            Height="35"
+                            Background="#7DDDC2"
+                            Margin="150,0,0,0"
+                            CornerRadius="20"/>
+                    <Border Width="700"
+                            Height="35"
+                            Background="#FC6586"
+                            Margin="0,15,0,0"
+                            CornerRadius="20"/>
+                    <Border Width="700"
+                            Height="35"
+                            Background="#383660"
+                            Margin="75,15,0,0"
+                            CornerRadius="20"/>
+                </StackPanel>
+
+            </StackPanel>
+
+        </Grid>
+        <Image Name="imgGirl"
+               Source="/Assets/Images/girl.png" 
+               Stretch="Fill"
+               RenderTransformOrigin="0.188,0.675"
+               Panel.ZIndex="1"
+               Margin="531,504,410,36"
+               Grid.Row="1" 
+               Grid.ColumnSpan="2"
+               Visibility="Hidden">
+            <Image.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="0.152"/>
+                    <TranslateTransform X="67.623" Y="47.676"/>
+                </TransformGroup>
+            </Image.RenderTransform>
+        </Image>
+        <Image Name="imgBoy" Height="233"
+               Source="/Assets/Images/boy.png"
+               Stretch="Fill" Width="274" 
+               RenderTransformOrigin="0.5,0.5" 
+               Margin="158,552,168,-10" 
+               Grid.Row="1" 
+               Grid.Column="1"
+               Visibility="Hidden">
+            <Image.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="0.425"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Image.RenderTransform>
+        </Image>
+        <Image Name="imgRobot" 
+            Source="/Assets/Images/robot.png"
+               Stretch="Uniform" 
+               Margin="0,471,184,0" 
+               Grid.Row="1" 
+               Grid.Column="1"
+               Visibility="Hidden"/>
+
+    </Grid>
+
+
+</Window>

@@ -1,0 +1,1400 @@
+﻿<Window x:Class="C__GameProject.Hangman"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:C__GameProject"
+        mc:Ignorable="d"
+        Title="Hangman" Height="800" Width="1200"
+            WindowStyle = "None" ResizeMode="NoResize"
+            Background="#181735"
+            WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25"/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+
+        <Grid Background="#0F0F2D"
+      Grid.ColumnSpan="2"
+      MouseDown="Grid_MouseDown">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock x:Name="txtblckMokey"
+                    Text="MoKey"
+                    Foreground="#7DDDC2"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Center"
+                        FontFamily="Fonts/#Dosis"
+                        FontWeight="Medium"
+                        Margin="0"/>
+
+            <Image Grid.Column="0"
+                 Width="15" Height="15"
+                 Source="Assets/Images/Paw.png"
+                 HorizontalAlignment="Center"
+                 VerticalAlignment="Center"
+                 Panel.ZIndex="1"
+                 Margin="0"/>
+
+            <Button Name="btnExit" 
+            Content="Exit"
+            Grid.Column="13"
+            Foreground="White"
+            FontSize="14"
+            FontWeight="Medium"
+            Click="btnExit_Click">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis"/>
+                        <Setter Property="Background" Value="#FE6584"/>
+                        <Setter Property="Cursor" Value="Hand"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#FF4C70"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Width="75" Height="15" 
+                        CornerRadius="7"
+                        Background="{TemplateBinding Background}">
+                            <ContentPresenter VerticalAlignment="Center"
+                                      HorizontalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+
+        </Grid>
+        <Grid Grid.Row="1">
+            <TextBlock x:Name="txthQuestion"
+                Text="Please select a topic for your word in the options down below:"
+                Foreground="White"
+                VerticalAlignment="Top"
+                HorizontalAlignment="Center"
+                FontFamily="Fonts/#Dosis"
+                FontWeight="Medium"
+                FontSize="40"
+                Margin="0,182,0,0"
+                Visibility="Visible"/>
+
+            <TextBlock x:Name="txtHangman"
+                       Text="Hangman"
+                       FontSize="60"
+                       Foreground="#7DDDC2"
+                       VerticalAlignment="Top"
+                       HorizontalAlignment="Left"
+                       FontFamily="Fonts/#Dosis"
+                       FontWeight="Medium"
+                       Margin="30,25,0,0" Width="495" Height="112"/>
+            <TextBlock x:Name="txtStatement"
+                       Text="Your word is:"
+                       FontSize="60"
+                       Foreground="#FE6584"
+                       VerticalAlignment="Top"
+                       HorizontalAlignment="Left"
+                       FontFamily="Fonts/#Dosis"
+                       FontWeight="Medium"
+                       Visibility="Hidden"
+                       Margin="30,312,0,0" Width="495" Height="112"/>
+
+            <StackPanel Height="150"
+                        Width="600"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Bottom"
+                        Orientation="Horizontal"
+                        Visibility="Visible">
+                <Button x:Name="btnCars"
+                        Content="Cars"
+                        Foreground="White"
+                        FontSize="14"
+                        FontWeight="Medium"
+                        Click="btnCars_Click"
+                        MouseEnter="btnCars_MouseEnter"
+                        MouseLeave="btnCars_MouseLeave"
+                        Margin="10">
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis"/>
+                            <Setter Property="Background" Value="#39385D"/>
+                            <Setter Property="Cursor" Value="Hand"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#FF4C70"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border Width="100" Height="25" 
+                                    CornerRadius="12"
+                                    Background="{TemplateBinding Background}">
+                                <ContentPresenter VerticalAlignment="Center"
+                                    HorizontalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+
+                <Button x:Name="btnAnimals"
+                        Content="Animals"
+                        Foreground="White"
+                        FontSize="14"
+                        FontWeight="Medium"
+                        Click="btnAnimals_Click"
+                        MouseEnter="btnAnimals_MouseEnter"
+                        MouseLeave="btnAnimals_MouseLeave"
+                        Margin="10"
+                        >
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis"/>
+                            <Setter Property="Background" Value="#39385D"/>
+                            <Setter Property="Cursor" Value="Hand"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#FF4C70"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border Width="100" Height="25" 
+                                    CornerRadius="12"
+                                    Background="{TemplateBinding Background}">
+                                <ContentPresenter VerticalAlignment="Center"
+                                    HorizontalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+
+                <Button x:Name="btnCountries"
+                         Content="Countries"
+                         Foreground="White"
+                         FontSize="14"
+                         FontWeight="Medium"
+                         Click="btnCountries_Click"
+                         MouseEnter="btnCountries_MouseEnter"
+                         MouseLeave="btnCountries_MouseLeave"
+                         Margin="10">
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis"/>
+                            <Setter Property="Background" Value="#39385D"/>
+                            <Setter Property="Cursor" Value="Hand"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#FF4C70"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border Width="100" Height="25" 
+                                CornerRadius="12"
+                                Background="{TemplateBinding Background}">
+                                <ContentPresenter VerticalAlignment="Center"
+                                    HorizontalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+
+                <Button x:Name="btnFruits"
+                         Content="Fruits"
+                         Foreground="White"
+                         FontSize="14"
+                         FontWeight="Medium"
+                         Click="btnFruits_Click"
+                         MouseEnter="btnFruits_MouseEnter"
+                         MouseLeave="btnFruits_MouseLeave"
+                         Margin="10">
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis"/>
+                            <Setter Property="Background" Value="#39385D"/>
+                            <Setter Property="Cursor" Value="Hand"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#FF4C70"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border Width="100" Height="25" 
+                                     CornerRadius="12"
+                                     Background="{TemplateBinding Background}">
+                                <ContentPresenter VerticalAlignment="Center"
+                                    HorizontalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+
+                <Button x:Name="btnProgrammingLanguages"
+                            Content="Programming"
+                            Foreground="White"
+                            FontSize="14"
+                            FontWeight="Medium"
+                            Click="btnProgrammingLanguages_Click"
+                            MouseEnter="btnProgrammingLanguages_MouseEnter"
+                            MouseLeave="btnProgrammingLanguages_MouseLeave"
+                            Margin="10">
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis"/>
+                            <Setter Property="Background" Value="#39385D"/>
+                            <Setter Property="Cursor" Value="Hand"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#FF4C70"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border Width="100" Height="25" 
+                                CornerRadius="12"
+                                Background="{TemplateBinding Background}">
+                                <ContentPresenter VerticalAlignment="Center"
+                                    HorizontalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </StackPanel>
+            <Image Name="imgHealthSir1"
+                   Width="46" Height="56"
+                   Source="Assets/Images/SirCat.png"
+                   HorizontalAlignment="Left"
+                   VerticalAlignment="Top"
+                   Panel.ZIndex="1"
+                   Margin="326,113,0,0" RenderTransformOrigin="-5.249,0.736"/>
+
+            <Image
+                Name="imgHealthSir2"
+                Width="46" Height="56"
+                Source="/Assets/Images/SirCat.png"
+                HorizontalAlignment="Left"   
+                VerticalAlignment="Top"
+                Panel.ZIndex="1"
+                Margin="377,113,0,0"/>
+
+
+            <Image Width="46" Height="56"
+                Source="/Assets/Images/SirCat.png"
+                HorizontalAlignment="Left"
+                Name="imgHealthSir3"   
+                VerticalAlignment="Top"
+                Panel.ZIndex="1"
+                Margin="428,113,0,0"/>
+            <Image Width="46" Height="56"
+                Source="/Assets/Images/SirCat.png"
+                HorizontalAlignment="Left"
+                Name="imgHealthSir4"   
+                VerticalAlignment="Top"
+                Panel.ZIndex="1"
+                Margin="474,113,0,0"/>
+            <Image Width="46" Height="56"
+                Source="/Assets/Images/SirCat.png"
+                HorizontalAlignment="Left"
+                Name="imgHealthSir5"   
+                VerticalAlignment="Top"
+                Panel.ZIndex="1"
+                Margin="525,113,0,0"/>
+            <StackPanel Margin="452,275,-102,-1068" RenderTransformOrigin="0.5,0.5" Panel.ZIndex="-1">
+                <StackPanel.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="42.802"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </StackPanel.RenderTransform>
+                <Border Width="700"
+                    Height="35"
+                    Background="#7DDDC2"
+                    Margin="150,0,0,0"
+                    CornerRadius="20"/>
+                <Border Width="700"
+                    Height="35"
+                    Background="#FC6586"
+                    Margin="0,15,0,0"
+                    CornerRadius="20"/>
+                <Border Width="700"
+                    Height="35"
+                    Background="#383660"
+                    Margin="75,15,0,0"
+                    CornerRadius="20"/>
+            </StackPanel>
+            <StackPanel Margin="-181,-345,531,-448" RenderTransformOrigin="0.5,0.5" Panel.ZIndex="-1">
+                <StackPanel.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="43.036"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </StackPanel.RenderTransform>
+                <Border Width="700"
+                    Height="35"
+                    Background="#7DDDC2"
+                    Margin="150,0,0,0"
+                    CornerRadius="20"/>
+                <Border Width="700"
+                    Height="35"
+                    Background="#FC6586"
+                    Margin="0,15,0,0"
+                    CornerRadius="20"/>
+                <Border Width="700"
+                    Height="35"
+                    Background="#383660"
+                    Margin="75,15,0,0"
+                    CornerRadius="20"/>
+            </StackPanel>
+
+        </Grid>
+
+        <Grid Grid.Row="2">
+            <Image
+                   x:Name="imgCar"
+                   Source="/Assets/Images/Car.png"
+                   Panel.ZIndex="-1"
+                   Visibility="Hidden"
+                   Margin="305,-15,305,-36"/>
+            <Image
+                    Name="imgAnimal"
+                    Source="/Assets/Images/Animal.png"
+                    Panel.ZIndex="-1"
+                    Visibility="Hidden"
+                    Margin="376,27,376,64"/>
+            <Image
+                    Name="imgProgramming"
+                    Source="/Assets/Images/programming.png"
+                    Panel.ZIndex="-1"
+                    Visibility="Hidden"
+                    Margin="418,0,452,58"/>
+            <Image
+                   Name="imgFruit"
+                   Source="/Assets/Images/fruit.png"
+                   Panel.ZIndex="-1"
+                   Visibility="Hidden"
+                   Margin="376,8,338,44"/>
+            <Image
+                   Name="imgCountries"
+                   Source="/Assets/Images/countries.png"
+                   Panel.ZIndex="-1"
+                   Visibility="Hidden"
+                   Margin="384,10,384,32"/>
+
+            <TextBlock x:Name="txtLetters"
+                        Text="TESTING 123"
+                        Foreground="White"
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Left"
+                        FontFamily="Fonts/#Dosis"
+                        FontWeight="Medium"
+                        FontSize="100"
+                        Margin="20,52,0,0"
+                        Visibility="Hidden" Width="1170"/>
+            <TextBlock x:Name="txtWins"
+                        Text="Wins: 0"
+                        Foreground="White"
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Left"
+                        FontFamily="Fonts/#Dosis"
+                        FontWeight="Light"
+                        TextWrapping="Wrap"
+                        FontSize="40"
+                        Margin="993,-356,0,0"
+                        Visibility="Hidden" Width="264" Height="81"/>
+            <TextBlock x:Name="txtLosses"
+            Text="Losses: 0"
+            Foreground="White"
+            VerticalAlignment="Top"
+            HorizontalAlignment="Left"
+            FontFamily="Fonts/#Dosis"
+            FontWeight="Light"
+            TextWrapping="Wrap"
+            FontSize="40"
+            Margin="993,-315,0,0"
+            Visibility="Hidden" Width="264" Height="81"/>
+            <TextBlock x:Name="txtHealth"
+            Text="Health Points: 5"
+            Foreground="#FF4C70"
+            VerticalAlignment="Top"
+            HorizontalAlignment="Left"
+            FontFamily="Fonts/#Dosis"
+            FontWeight="Medium"
+            TextWrapping="Wrap"
+            FontSize="40"
+            Margin="336,-357,0,0"
+            Visibility="Hidden" Width="311" Height="81"/>
+
+            <Button Name="btnHome"
+                            Content="Home"
+                            Foreground="White"
+                            FontSize="14"
+                            FontWeight="Medium"
+                            Click="btnHome_Click"
+                            Margin="969,160,53,160" Height="67"
+>
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis"/>
+                        <Setter Property="Background" Value="#FE6584"/>
+                        <Setter Property="Cursor" Value="Hand"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#FF4C70"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Width="100" Height="50" 
+                                        CornerRadius="13"
+                                        Background="{TemplateBinding Background}">
+                            <ContentPresenter VerticalAlignment="Center"
+                                                      HorizontalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+
+            <Button Name="btnRestart"
+        Content="Restart"
+        Foreground="White"
+        FontSize="14"
+        FontWeight="Medium"
+        Click="btnRestart_Click"
+        Margin="852,128,162,128">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis"/>
+                        <Setter Property="Background" Value="#FE6584"/>
+                        <Setter Property="Cursor" Value="Hand"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#FF4C70"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Width="100" Height="50" 
+                    CornerRadius="13"
+                    Background="{TemplateBinding Background}">
+                            <ContentPresenter VerticalAlignment="Center"
+                                  HorizontalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+
+            <StackPanel Height="200" VerticalAlignment="Top" Orientation="Horizontal" Margin="20,155,0,0" >
+                <Button 
+                     x:Name="btnA"
+                     Content="A"
+                     Foreground="White"
+                     FontSize="14"
+                     FontWeight="Medium"
+                     Margin="2"
+                     Click="btnA_Click">
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis"/>
+                            <Setter Property="Background" Value="#39385D"/>
+                            <Setter Property="Cursor" Value="Hand"/>
+                            <Setter Property="Panel.ZIndex" Value="1"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#FF4C70"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border Width="40" Height="21" 
+                 CornerRadius="12"
+                 Background="{TemplateBinding Background}">
+                                <ContentPresenter VerticalAlignment="Center"
+                 HorizontalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+                <Button 
+     x:Name="btnB"
+     Content="B"
+     Foreground="White"
+     FontSize="14"
+     FontWeight="Medium"
+     Margin="2"
+     Click="btnA_Click">
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis"/>
+                            <Setter Property="Background" Value="#39385D"/>
+                            <Setter Property="Cursor" Value="Hand"/>
+                            <Setter Property="Panel.ZIndex" Value="1"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#FF4C70"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border Width="40" Height="21" 
+                 CornerRadius="12"
+                 Background="{TemplateBinding Background}">
+                                <ContentPresenter VerticalAlignment="Center"
+                 HorizontalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+                <Button 
+x:Name="btnC"
+Content="C"
+Foreground="White"
+FontSize="14"
+FontWeight="Medium"
+Margin="2"
+Click="btnA_Click">
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis"/>
+                            <Setter Property="Background" Value="#39385D"/>
+                            <Setter Property="Cursor" Value="Hand"/>
+                            <Setter Property="Panel.ZIndex" Value="1"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#FF4C70"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border Width="40" Height="21" 
+            CornerRadius="12"
+            Background="{TemplateBinding Background}">
+                                <ContentPresenter VerticalAlignment="Center"
+            HorizontalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+                <Button 
+x:Name="btnD"
+Content="D"
+Foreground="White"
+FontSize="14"
+FontWeight="Medium"
+Margin="2"
+Click="btnA_Click">
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis"/>
+                            <Setter Property="Background" Value="#39385D"/>
+                            <Setter Property="Cursor" Value="Hand"/>
+                            <Setter Property="Panel.ZIndex" Value="1"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#FF4C70"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border Width="40" Height="21" 
+            CornerRadius="12"
+            Background="{TemplateBinding Background}">
+                                <ContentPresenter VerticalAlignment="Center"
+            HorizontalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+                <Button 
+x:Name="btnE"
+Content="E"
+Foreground="White"
+FontSize="14"
+FontWeight="Medium"
+Margin="2"
+Click="btnA_Click">
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis"/>
+                            <Setter Property="Background" Value="#39385D"/>
+                            <Setter Property="Cursor" Value="Hand"/>
+                            <Setter Property="Panel.ZIndex" Value="1"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#FF4C70"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border Width="40" Height="21" 
+            CornerRadius="12"
+            Background="{TemplateBinding Background}">
+                                <ContentPresenter VerticalAlignment="Center"
+            HorizontalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+                <Button 
+x:Name="btnF"
+Content="F"
+Foreground="White"
+FontSize="14"
+FontWeight="Medium"
+Margin="2"
+Click="btnA_Click">
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis"/>
+                            <Setter Property="Background" Value="#39385D"/>
+                            <Setter Property="Cursor" Value="Hand"/>
+                            <Setter Property="Panel.ZIndex" Value="1"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#FF4C70"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border Width="40" Height="21" 
+            CornerRadius="12"
+            Background="{TemplateBinding Background}">
+                                <ContentPresenter VerticalAlignment="Center"
+            HorizontalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+                <Button 
+x:Name="btnG"
+Content="G"
+Foreground="White"
+FontSize="14"
+FontWeight="Medium"
+Margin="2"
+Click="btnA_Click">
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis"/>
+                            <Setter Property="Background" Value="#39385D"/>
+                            <Setter Property="Cursor" Value="Hand"/>
+                            <Setter Property="Panel.ZIndex" Value="1"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#FF4C70"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border Width="40" Height="21" 
+            CornerRadius="12"
+            Background="{TemplateBinding Background}">
+                                <ContentPresenter VerticalAlignment="Center"
+            HorizontalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+                <Button 
+x:Name="btnH"
+Content="H"
+Foreground="White"
+FontSize="14"
+FontWeight="Medium"
+Margin="2"
+Click="btnA_Click">
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis"/>
+                            <Setter Property="Background" Value="#39385D"/>
+                            <Setter Property="Cursor" Value="Hand"/>
+                            <Setter Property="Panel.ZIndex" Value="1"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#FF4C70"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border Width="40" Height="21" 
+            CornerRadius="12"
+            Background="{TemplateBinding Background}">
+                                <ContentPresenter VerticalAlignment="Center"
+            HorizontalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+                <Button 
+x:Name="btnI"
+Content="I"
+Foreground="White"
+FontSize="14"
+FontWeight="Medium"
+Margin="2"
+Click="btnA_Click">
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis"/>
+                            <Setter Property="Background" Value="#39385D"/>
+                            <Setter Property="Cursor" Value="Hand"/>
+                            <Setter Property="Panel.ZIndex" Value="1"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#FF4C70"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border Width="40" Height="21" 
+            CornerRadius="12"
+            Background="{TemplateBinding Background}">
+                                <ContentPresenter VerticalAlignment="Center"
+            HorizontalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+                <Button 
+x:Name="btnJ"
+Content="J"
+Foreground="White"
+FontSize="14"
+FontWeight="Medium"
+Margin="2"
+Click="btnA_Click">
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis"/>
+                            <Setter Property="Background" Value="#39385D"/>
+                            <Setter Property="Cursor" Value="Hand"/>
+                            <Setter Property="Panel.ZIndex" Value="1"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#FF4C70"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border Width="40" Height="21" 
+            CornerRadius="12"
+            Background="{TemplateBinding Background}">
+                                <ContentPresenter VerticalAlignment="Center"
+            HorizontalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+                <Button 
+x:Name="btnK"
+Content="K"
+Foreground="White"
+FontSize="14"
+FontWeight="Medium"
+Margin="2"
+Click="btnA_Click">
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis"/>
+                            <Setter Property="Background" Value="#39385D"/>
+                            <Setter Property="Cursor" Value="Hand"/>
+                            <Setter Property="Panel.ZIndex" Value="1"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#FF4C70"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border Width="40" Height="21" 
+            CornerRadius="12"
+            Background="{TemplateBinding Background}">
+                                <ContentPresenter VerticalAlignment="Center"
+            HorizontalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+                <Button 
+x:Name="btnL"
+Content="L"
+Foreground="White"
+FontSize="14"
+FontWeight="Medium"
+Margin="2"
+Click="btnA_Click">
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis"/>
+                            <Setter Property="Background" Value="#39385D"/>
+                            <Setter Property="Cursor" Value="Hand"/>
+                            <Setter Property="Panel.ZIndex" Value="1"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#FF4C70"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border Width="40" Height="21" 
+            CornerRadius="12"
+            Background="{TemplateBinding Background}">
+                                <ContentPresenter VerticalAlignment="Center"
+            HorizontalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+                <Button 
+x:Name="btnM"
+Content="M"
+Foreground="White"
+FontSize="14"
+FontWeight="Medium"
+Margin="2"
+Click="btnA_Click">
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis"/>
+                            <Setter Property="Background" Value="#39385D"/>
+                            <Setter Property="Cursor" Value="Hand"/>
+                            <Setter Property="Panel.ZIndex" Value="1"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#FF4C70"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border Width="40" Height="21" 
+            CornerRadius="12"
+            Background="{TemplateBinding Background}">
+                                <ContentPresenter VerticalAlignment="Center"
+            HorizontalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+                <Button 
+x:Name="btnN"
+Content="N"
+Foreground="White"
+FontSize="14"
+FontWeight="Medium"
+Margin="2"
+Click="btnA_Click">
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis"/>
+                            <Setter Property="Background" Value="#39385D"/>
+                            <Setter Property="Cursor" Value="Hand"/>
+                            <Setter Property="Panel.ZIndex" Value="1"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#FF4C70"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border Width="40" Height="21" 
+            CornerRadius="12"
+            Background="{TemplateBinding Background}">
+                                <ContentPresenter VerticalAlignment="Center"
+            HorizontalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+                <Button 
+x:Name="btnO"
+Content="O"
+Foreground="White"
+FontSize="14"
+FontWeight="Medium"
+Margin="2"
+Click="btnA_Click">
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis"/>
+                            <Setter Property="Background" Value="#39385D"/>
+                            <Setter Property="Cursor" Value="Hand"/>
+                            <Setter Property="Panel.ZIndex" Value="1"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#FF4C70"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border Width="40" Height="21" 
+            CornerRadius="12"
+            Background="{TemplateBinding Background}">
+                                <ContentPresenter VerticalAlignment="Center"
+            HorizontalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+                <Button 
+x:Name="btnP"
+Content="P"
+Foreground="White"
+FontSize="14"
+FontWeight="Medium"
+Margin="2"
+Click="btnA_Click">
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis"/>
+                            <Setter Property="Background" Value="#39385D"/>
+                            <Setter Property="Cursor" Value="Hand"/>
+                            <Setter Property="Panel.ZIndex" Value="1"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#FF4C70"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border Width="40" Height="21" 
+            CornerRadius="12"
+            Background="{TemplateBinding Background}">
+                                <ContentPresenter VerticalAlignment="Center"
+            HorizontalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+                <Button 
+x:Name="btnQ"
+Content="Q"
+Foreground="White"
+FontSize="14"
+FontWeight="Medium"
+Margin="2"
+Click="btnA_Click">
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis"/>
+                            <Setter Property="Background" Value="#39385D"/>
+                            <Setter Property="Cursor" Value="Hand"/>
+                            <Setter Property="Panel.ZIndex" Value="1"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#FF4C70"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border Width="40" Height="21" 
+            CornerRadius="12"
+            Background="{TemplateBinding Background}">
+                                <ContentPresenter VerticalAlignment="Center"
+            HorizontalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+                <Button 
+x:Name="btnR"
+Content="R"
+Foreground="White"
+FontSize="14"
+FontWeight="Medium"
+Margin="2"
+Click="btnA_Click">
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis"/>
+                            <Setter Property="Background" Value="#39385D"/>
+                            <Setter Property="Cursor" Value="Hand"/>
+                            <Setter Property="Panel.ZIndex" Value="1"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#FF4C70"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border Width="40" Height="21" 
+            CornerRadius="12"
+            Background="{TemplateBinding Background}">
+                                <ContentPresenter VerticalAlignment="Center"
+            HorizontalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+                <Button 
+x:Name="btnS"
+Content="S"
+Foreground="White"
+FontSize="14"
+FontWeight="Medium"
+Margin="2"
+Click="btnA_Click">
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis"/>
+                            <Setter Property="Background" Value="#39385D"/>
+                            <Setter Property="Cursor" Value="Hand"/>
+                            <Setter Property="Panel.ZIndex" Value="1"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#FF4C70"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border Width="40" Height="21" 
+            CornerRadius="12"
+            Background="{TemplateBinding Background}">
+                                <ContentPresenter VerticalAlignment="Center"
+            HorizontalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+                <Button 
+x:Name="btnT"
+Content="T"
+Foreground="White"
+FontSize="14"
+FontWeight="Medium"
+Margin="2"
+Click="btnA_Click">
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis"/>
+                            <Setter Property="Background" Value="#39385D"/>
+                            <Setter Property="Cursor" Value="Hand"/>
+                            <Setter Property="Panel.ZIndex" Value="1"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#FF4C70"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border Width="40" Height="21" 
+            CornerRadius="12"
+            Background="{TemplateBinding Background}">
+                                <ContentPresenter VerticalAlignment="Center"
+            HorizontalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+                <Button 
+x:Name="btnU"
+Content="U"
+Foreground="White"
+FontSize="14"
+FontWeight="Medium"
+Margin="2"
+Click="btnA_Click">
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis"/>
+                            <Setter Property="Background" Value="#39385D"/>
+                            <Setter Property="Cursor" Value="Hand"/>
+                            <Setter Property="Panel.ZIndex" Value="1"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#FF4C70"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border Width="40" Height="21" 
+            CornerRadius="12"
+            Background="{TemplateBinding Background}">
+                                <ContentPresenter VerticalAlignment="Center"
+            HorizontalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+                <Button 
+x:Name="btnV"
+Content="V"
+Foreground="White"
+FontSize="14"
+FontWeight="Medium"
+Margin="2"
+Click="btnA_Click">
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis"/>
+                            <Setter Property="Background" Value="#39385D"/>
+                            <Setter Property="Cursor" Value="Hand"/>
+                            <Setter Property="Panel.ZIndex" Value="1"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#FF4C70"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border Width="40" Height="21" 
+            CornerRadius="12"
+            Background="{TemplateBinding Background}">
+                                <ContentPresenter VerticalAlignment="Center"
+            HorizontalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+                <Button 
+x:Name="btnW"
+Content="W"
+Foreground="White"
+FontSize="14"
+FontWeight="Medium"
+Margin="2"
+Click="btnA_Click">
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis"/>
+                            <Setter Property="Background" Value="#39385D"/>
+                            <Setter Property="Cursor" Value="Hand"/>
+                            <Setter Property="Panel.ZIndex" Value="1"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#FF4C70"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border Width="40" Height="21" 
+            CornerRadius="12"
+            Background="{TemplateBinding Background}">
+                                <ContentPresenter VerticalAlignment="Center"
+            HorizontalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+                <Button 
+x:Name="btnX"
+Content="X"
+Foreground="White"
+FontSize="14"
+FontWeight="Medium"
+Margin="2"
+Click="btnA_Click">
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis"/>
+                            <Setter Property="Background" Value="#39385D"/>
+                            <Setter Property="Cursor" Value="Hand"/>
+                            <Setter Property="Panel.ZIndex" Value="1"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#FF4C70"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border Width="40" Height="21" 
+            CornerRadius="12"
+            Background="{TemplateBinding Background}">
+                                <ContentPresenter VerticalAlignment="Center"
+            HorizontalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+                <Button 
+x:Name="btnY"
+Content="Y"
+Foreground="White"
+FontSize="14"
+FontWeight="Medium"
+Margin="2"
+Click="btnA_Click">
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis"/>
+                            <Setter Property="Background" Value="#39385D"/>
+                            <Setter Property="Cursor" Value="Hand"/>
+                            <Setter Property="Panel.ZIndex" Value="1"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#FF4C70"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border Width="40" Height="21" 
+            CornerRadius="12"
+            Background="{TemplateBinding Background}">
+                                <ContentPresenter VerticalAlignment="Center"
+            HorizontalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+                <Button 
+x:Name="btnZ"
+Content="Z"
+Foreground="White"
+FontSize="14"
+FontWeight="Medium"
+Margin="2"
+Click="btnA_Click">
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis"/>
+                            <Setter Property="Background" Value="#39385D"/>
+                            <Setter Property="Cursor" Value="Hand"/>
+                            <Setter Property="Panel.ZIndex" Value="1"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#FF4C70"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border Width="40" Height="21" 
+            CornerRadius="12"
+            Background="{TemplateBinding Background}">
+                                <ContentPresenter VerticalAlignment="Center"
+            HorizontalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </StackPanel>
+
+
+
+
+        </Grid>
+    </Grid>
+</Window>

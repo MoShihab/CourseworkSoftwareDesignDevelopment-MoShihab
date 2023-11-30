@@ -1,0 +1,41 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net7.0-windows</TargetFramework>
+    <RootNamespace>C__GameProject</RootNamespace>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Assets\Images\Animal.png" />
+    <None Remove="Assets\Images\boy.png" />
+    <None Remove="Assets\Images\Car.png" />
+    <None Remove="Assets\Images\countries.png" />
+    <None Remove="Assets\Images\fruit.png" />
+    <None Remove="Assets\Images\girl.png" />
+    <None Remove="Assets\Images\Paw.png" />
+    <None Remove="Assets\Images\programming.png" />
+    <None Remove="Assets\Images\robot.png" />
+    <None Remove="Assets\Images\SirCat.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Assets\Images\Animal.png" />
+    <Resource Include="Assets\Images\boy.png" />
+    <Resource Include="Assets\Images\Car.png" />
+    <Resource Include="Assets\Images\countries.png" />
+    <Resource Include="Assets\Images\fruit.png" />
+    <Resource Include="Assets\Images\girl.png" />
+    <Resource Include="Assets\Images\Paw.png" />
+    <Resource Include="Assets\Images\programming.png" />
+    <Resource Include="Assets\Images\robot.png" />
+    <Resource Include="Assets\Images\SirCat.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="UserControls\" />
+  </ItemGroup>
+
+</Project>
